@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="easyui-1.3.5/jquery.min.js"></script>
+<script type="text/javascript" src="easyui-1.3.5/easyloader.js"></script><!-- 智能加载js，选择所需要的js和css进行加载，不用加载所有的，不过要用它的方法，可加快速度 -->
+<!-- 但是现在的条件，不需要这点速度的加快，反而增加了开发难度 -->
+<script type="text/javascript" src="easyui-1.3.5/jquery.easyui.min.js"></script><!-- 核心js，如果使用了智能js，就可不需要-->
+<script type="text/javascript" src="easyui-1.3.5/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="easyui-1.3.5/jquery.cookie.js"></script>
+<link rel="stylesheet" type="text/css" href="easyui-1.3.5/themes/default/easyui.css"><!-- 包含了所有的css，如果使用了智能js，就可不需要 -->
+<link rel="stylesheet" type="text/css" href="easyui-1.3.5/themes/icon.css">
+<script type="text/javascript" src="js/test1.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+</head>
+<body class="easyui-layout" ><!-- 直接将layout放入body并且直接包含布局的小div，不要大div，也是全局效果 -->
+ <!-- <div id="xx">使用指定ui解析，必须使用父类容器的id  $.parser.parse('#xx')
+	<div id="x"  class = "easyui-dialog" style="width:400px;height:200px" >只有使用class加载，渲染器函数才有效 $.parser.parse() 绚烂所有使用easyui的
+	 				dialog
+	</div>
+	<div id="y" style="width:100px;height:100px; background:orange">可拖动</div>
+</div>  
+
+<div id="z" style="width:600px;height:500px">-->
+	<div data-options="region:'north',title:'北',collapsible:false" style="height:100px;">
+		<span id="username"></span>
+	</div>
+	<!-- <div data-options="region:'south',title:'南'" style="height:100px;">	</div> -->
+	<div data-options="region:'west',title:'西'" style="width:200px;">
+		<!-- <ul class="easyui-tree">
+			<li><span>系统管理</span>
+				<ul>
+					<li>更新</li>
+					<li>信息</li>
+				</ul>
+			</li>	
+			<li><span>用户管理</span>
+				<ul>
+					<li>新增</li>
+					<li>查询</li>
+				</ul>
+			</li>	
+		</ul> -->
+		<ul id="ultree"></ul><!-- 使用js加载 -->
+	</div>
+	<!-- <div data-options="region:'east',title:'东'" style="width:100px;"></div> -->
+	<div data-options="region:'center',title:'中'">
+		<div id="tabs"></div>
+	</div>
+	
+	<div id="winLogin" buttons="#login-buttons">
+		<form id="Login" method="post" >
+			<table>
+				<tr>
+					<td>用户名:</td>
+					<td><input name="userName" type="text" class="easyui-validatebox" required="true"/></td>
+				</tr>
+				<tr>
+					<td>密 码:</td>
+					<td><input name="password" type="password" class="easyui-validatebox" required="true"/></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+		
+	<div id="login-buttons">
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" id="loginBtn">登入</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"  id="btnClear">清空</a>
+	</div>
+	
+	<div id="mm" class="easyui-menu" style="width:150px; display:none">
+		<div id="mm-tabupdate">刷新</div>
+		<div class="menu-sep"></div>
+		<div id="mm-tabclose">关闭</div>
+		<div id="mm-tabcloseall">全部关闭</div>
+		<div id="mm-tabcloseother">除此之外全部关闭</div>
+		<div class="menu-sep"></div>
+		<div id="mm-tabcloseright">当前页右侧全部关闭</div>
+		<div id="mm-tabcloseleft">当前页左侧全部关闭</div>
+		<div class="menu-sep"></div>
+		<div id="mm-exit">退出</div>
+	</div>
+<!-- </div> -->
+</body> 
+</html>

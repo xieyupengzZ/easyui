@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mybatis.BandHeartRateDateMapper" >
+  <resultMap id="BaseResultMap" type="mybatis.BandHeartRateDate" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="mac_no" property="macNo" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="INTEGER" />
+    <result column="average_heart_rate" property="averageHeartRate" jdbcType="INTEGER" />
+    <result column="burn_fat_threshold" property="burnFatThreshold" jdbcType="INTEGER" />
+    <result column="aerobic_threshold" property="aerobicThreshold" jdbcType="INTEGER" />
+    <result column="limit_threshold" property="limitThreshold" jdbcType="INTEGER" />
+    <result column="burn_fat_mins" property="burnFatMins" jdbcType="INTEGER" />
+    <result column="aerobic_mins" property="aerobicMins" jdbcType="INTEGER" />
+    <result column="limit_mins" property="limitMins" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, mac_no, date, average_heart_rate, burn_fat_threshold, aerobic_threshold, 
+    limit_threshold, burn_fat_mins, aerobic_mins, limit_mins, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from band_heart_rate_date
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from band_heart_rate_date
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="mybatis.BandHeartRateDate" >
+    insert into band_heart_rate_date (id, user_id, mac_no, 
+      date, average_heart_rate, burn_fat_threshold, 
+      aerobic_threshold, limit_threshold, burn_fat_mins, 
+      aerobic_mins, limit_mins, update_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=INTEGER}, #{macNo,jdbcType=VARCHAR}, 
+      #{date,jdbcType=INTEGER}, #{averageHeartRate,jdbcType=INTEGER}, #{burnFatThreshold,jdbcType=INTEGER}, 
+      #{aerobicThreshold,jdbcType=INTEGER}, #{limitThreshold,jdbcType=INTEGER}, #{burnFatMins,jdbcType=INTEGER}, 
+      #{aerobicMins,jdbcType=INTEGER}, #{limitMins,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="mybatis.BandHeartRateDate" >
+    insert into band_heart_rate_date
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="macNo != null" >
+        mac_no,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="averageHeartRate != null" >
+        average_heart_rate,
+      </if>
+      <if test="burnFatThreshold != null" >
+        burn_fat_threshold,
+      </if>
+      <if test="aerobicThreshold != null" >
+        aerobic_threshold,
+      </if>
+      <if test="limitThreshold != null" >
+        limit_threshold,
+      </if>
+      <if test="burnFatMins != null" >
+        burn_fat_mins,
+      </if>
+      <if test="aerobicMins != null" >
+        aerobic_mins,
+      </if>
+      <if test="limitMins != null" >
+        limit_mins,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="macNo != null" >
+        #{macNo,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=INTEGER},
+      </if>
+      <if test="averageHeartRate != null" >
+        #{averageHeartRate,jdbcType=INTEGER},
+      </if>
+      <if test="burnFatThreshold != null" >
+        #{burnFatThreshold,jdbcType=INTEGER},
+      </if>
+      <if test="aerobicThreshold != null" >
+        #{aerobicThreshold,jdbcType=INTEGER},
+      </if>
+      <if test="limitThreshold != null" >
+        #{limitThreshold,jdbcType=INTEGER},
+      </if>
+      <if test="burnFatMins != null" >
+        #{burnFatMins,jdbcType=INTEGER},
+      </if>
+      <if test="aerobicMins != null" >
+        #{aerobicMins,jdbcType=INTEGER},
+      </if>
+      <if test="limitMins != null" >
+        #{limitMins,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="mybatis.BandHeartRateDate" >
+    update band_heart_rate_date
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="macNo != null" >
+        mac_no = #{macNo,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=INTEGER},
+      </if>
+      <if test="averageHeartRate != null" >
+        average_heart_rate = #{averageHeartRate,jdbcType=INTEGER},
+      </if>
+      <if test="burnFatThreshold != null" >
+        burn_fat_threshold = #{burnFatThreshold,jdbcType=INTEGER},
+      </if>
+      <if test="aerobicThreshold != null" >
+        aerobic_threshold = #{aerobicThreshold,jdbcType=INTEGER},
+      </if>
+      <if test="limitThreshold != null" >
+        limit_threshold = #{limitThreshold,jdbcType=INTEGER},
+      </if>
+      <if test="burnFatMins != null" >
+        burn_fat_mins = #{burnFatMins,jdbcType=INTEGER},
+      </if>
+      <if test="aerobicMins != null" >
+        aerobic_mins = #{aerobicMins,jdbcType=INTEGER},
+      </if>
+      <if test="limitMins != null" >
+        limit_mins = #{limitMins,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="mybatis.BandHeartRateDate" >
+    update band_heart_rate_date
+    set user_id = #{userId,jdbcType=INTEGER},
+      mac_no = #{macNo,jdbcType=VARCHAR},
+      date = #{date,jdbcType=INTEGER},
+      average_heart_rate = #{averageHeartRate,jdbcType=INTEGER},
+      burn_fat_threshold = #{burnFatThreshold,jdbcType=INTEGER},
+      aerobic_threshold = #{aerobicThreshold,jdbcType=INTEGER},
+      limit_threshold = #{limitThreshold,jdbcType=INTEGER},
+      burn_fat_mins = #{burnFatMins,jdbcType=INTEGER},
+      aerobic_mins = #{aerobicMins,jdbcType=INTEGER},
+      limit_mins = #{limitMins,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="easyui-1.3.5/jquery.min.js"></script>
+<script type="text/javascript" src="easyui-1.3.5/jquery.easyui.min.js"></script><!-- 核心js，如果使用了智能js，就可不需要-->
+<script type="text/javascript" src="easyui-1.3.5/locale/easyui-lang-zh_CN.js"></script>
+<link rel="stylesheet" type="text/css" href="easyui-1.3.5/themes/default/easyui.css"><!-- 包含了所有的css，如果使用了智能js，就可不需要 -->
+<link rel="stylesheet" type="text/css" href="easyui-1.3.5/themes/icon.css">
+<script src="js/objectDesign.js" type="text/javascript"></script>
+<script src="js/common.js" type="text/javascript"></script>
+</head>
+<body style="margin: 0px;padding: 0px;">
+		<table id="tbDataGrid"  toolbar="#toolbar"></table>
+		<div id="toolbar" >
+				<div id="toolDiv">
+						<a href="#" id="btnAdd" class="easyui-linkbutton" iconCls="icon-add" plain="true" style="padding-left: 10px;">添加 </a> 
+						<a href="#"id="btnEdit" class="easyui-linkbutton" iconCls="icon-edit" plain="true" style="padding-left: 10px;">修改</a> 
+						<a href="#"id="btnDelete" class="easyui-linkbutton" iconCls="icon-remove" plain="true" style="padding-left: 10px;">删除</a> 
+						<a href="#"id="btnReload" class="easyui-linkbutton" iconCls="icon-reload" plain="true" style="padding-left: 10px;">刷新</a>
+				</div>
+				<div id="queryDiv" style="float:left;">
+						查询条件1：
+						<input id="selectCombobox" class="easyui-combo"/>
+						查询条件2：
+						<input id="queryConditionO" type="text"/>
+						<input  type="radio" name="sex" value="1" checked/><label>男</label>
+						<input  type="radio" name="sex" value="2"/><label>女</label>
+						<a href="#" class="easyui-linkbutton" id="btnSearch" iconCls="icon-search">Search</a> 
+				</div>
+		</div>
+		<div id="dl" class="easyui-dialog dialog-show-500x500"  buttons="#btnbar" closed="true">
+			<form id="dlf" method="post" >
+				<div><span>菜名</span><input type="text"  class="easyui-validatebox" required="true"  name="food"/></div>
+				<div><span>价格</span><input type="text" class="easyui-validatebox" required="true"  name="price"/></div>
+				<div><span>额外价格</span><input type="text"  class="easyui-validatebox" required="true"  name="extrafee"/></div>
+				<div><span>餐馆</span><input type="text" class="easyui-validatebox" required="true"  name="restaurantid"/></div>
+			</form>
+		</div>
+		<div id="dl2" class="easyui-dialog" buttons="#btnbar2" closed="true" >
+			<form id="uploadfm" method="post" enctype="multipart/form-data">
+					<input type="file" name="fileup" />
+			</form>
+		</div>
+		 <div id="btnbar">
+				<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" id="btnSaveForm">Save</a> 
+			    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dl').dialog('close')">Cancel</a>
+		</div>
+		 <div id="btnbar2">
+				<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" id="btnUploadForm">Save</a> 
+			    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dl2').dialog('close')">Cancel</a>
+		</div>
+</body>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mybatis.BandGoalDataMapper" >
+  <resultMap id="BaseResultMap" type="mybatis.BandGoalData" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="macNo" property="macno" jdbcType="VARCHAR" />
+    <result column="stepCount" property="stepcount" jdbcType="INTEGER" />
+    <result column="stepCalories" property="stepcalories" jdbcType="INTEGER" />
+    <result column="stepDistances" property="stepdistances" jdbcType="INTEGER" />
+    <result column="stepActiveTime" property="stepactivetime" jdbcType="INTEGER" />
+    <result column="sportCalories" property="sportcalories" jdbcType="INTEGER" />
+    <result column="sleepMinute" property="sleepminute" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, userId, macNo, stepCount, stepCalories, stepDistances, stepActiveTime, sportCalories, 
+    sleepMinute, createTime, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from band_goal_data
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from band_goal_data
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="mybatis.BandGoalData" >
+    insert into band_goal_data (id, userId, macNo, 
+      stepCount, stepCalories, stepDistances, 
+      stepActiveTime, sportCalories, sleepMinute, 
+      createTime, updateTime)
+    values (#{id,jdbcType=BIGINT}, #{userid,jdbcType=INTEGER}, #{macno,jdbcType=VARCHAR}, 
+      #{stepcount,jdbcType=INTEGER}, #{stepcalories,jdbcType=INTEGER}, #{stepdistances,jdbcType=INTEGER}, 
+      #{stepactivetime,jdbcType=INTEGER}, #{sportcalories,jdbcType=INTEGER}, #{sleepminute,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="mybatis.BandGoalData" >
+    insert into band_goal_data
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="macno != null" >
+        macNo,
+      </if>
+      <if test="stepcount != null" >
+        stepCount,
+      </if>
+      <if test="stepcalories != null" >
+        stepCalories,
+      </if>
+      <if test="stepdistances != null" >
+        stepDistances,
+      </if>
+      <if test="stepactivetime != null" >
+        stepActiveTime,
+      </if>
+      <if test="sportcalories != null" >
+        sportCalories,
+      </if>
+      <if test="sleepminute != null" >
+        sleepMinute,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="macno != null" >
+        #{macno,jdbcType=VARCHAR},
+      </if>
+      <if test="stepcount != null" >
+        #{stepcount,jdbcType=INTEGER},
+      </if>
+      <if test="stepcalories != null" >
+        #{stepcalories,jdbcType=INTEGER},
+      </if>
+      <if test="stepdistances != null" >
+        #{stepdistances,jdbcType=INTEGER},
+      </if>
+      <if test="stepactivetime != null" >
+        #{stepactivetime,jdbcType=INTEGER},
+      </if>
+      <if test="sportcalories != null" >
+        #{sportcalories,jdbcType=INTEGER},
+      </if>
+      <if test="sleepminute != null" >
+        #{sleepminute,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="mybatis.BandGoalData" >
+    update band_goal_data
+    <set >
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="macno != null" >
+        macNo = #{macno,jdbcType=VARCHAR},
+      </if>
+      <if test="stepcount != null" >
+        stepCount = #{stepcount,jdbcType=INTEGER},
+      </if>
+      <if test="stepcalories != null" >
+        stepCalories = #{stepcalories,jdbcType=INTEGER},
+      </if>
+      <if test="stepdistances != null" >
+        stepDistances = #{stepdistances,jdbcType=INTEGER},
+      </if>
+      <if test="stepactivetime != null" >
+        stepActiveTime = #{stepactivetime,jdbcType=INTEGER},
+      </if>
+      <if test="sportcalories != null" >
+        sportCalories = #{sportcalories,jdbcType=INTEGER},
+      </if>
+      <if test="sleepminute != null" >
+        sleepMinute = #{sleepminute,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="mybatis.BandGoalData" >
+    update band_goal_data
+    set userId = #{userid,jdbcType=INTEGER},
+      macNo = #{macno,jdbcType=VARCHAR},
+      stepCount = #{stepcount,jdbcType=INTEGER},
+      stepCalories = #{stepcalories,jdbcType=INTEGER},
+      stepDistances = #{stepdistances,jdbcType=INTEGER},
+      stepActiveTime = #{stepactivetime,jdbcType=INTEGER},
+      sportCalories = #{sportcalories,jdbcType=INTEGER},
+      sleepMinute = #{sleepminute,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mybatis.BandSleepDateMapper" >
+  <resultMap id="BaseResultMap" type="mybatis.BandSleepDate" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="mac_no" property="macNo" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="INTEGER" />
+    <result column="end_time" property="endTime" jdbcType="INTEGER" />
+    <result column="total_minute" property="totalMinute" jdbcType="INTEGER" />
+    <result column="light_sleep_count" property="lightSleepCount" jdbcType="INTEGER" />
+    <result column="deep_sleep_count" property="deepSleepCount" jdbcType="INTEGER" />
+    <result column="wake_count" property="wakeCount" jdbcType="INTEGER" />
+    <result column="wake_minute" property="wakeMinute" jdbcType="INTEGER" />
+    <result column="ligth_sleep_minute" property="ligthSleepMinute" jdbcType="INTEGER" />
+    <result column="deep_sleep_minute" property="deepSleepMinute" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, mac_no, date, end_time, total_minute, light_sleep_count, deep_sleep_count, 
+    wake_count, wake_minute, ligth_sleep_minute, deep_sleep_minute, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from band_sleep_date
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from band_sleep_date
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="mybatis.BandSleepDate" >
+    insert into band_sleep_date (id, user_id, mac_no, 
+      date, end_time, total_minute, 
+      light_sleep_count, deep_sleep_count, wake_count, 
+      wake_minute, ligth_sleep_minute, deep_sleep_minute, 
+      update_time)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=INTEGER}, #{macNo,jdbcType=VARCHAR}, 
+      #{date,jdbcType=INTEGER}, #{endTime,jdbcType=INTEGER}, #{totalMinute,jdbcType=INTEGER}, 
+      #{lightSleepCount,jdbcType=INTEGER}, #{deepSleepCount,jdbcType=INTEGER}, #{wakeCount,jdbcType=INTEGER}, 
+      #{wakeMinute,jdbcType=INTEGER}, #{ligthSleepMinute,jdbcType=INTEGER}, #{deepSleepMinute,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="mybatis.BandSleepDate" >
+    insert into band_sleep_date
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="macNo != null" >
+        mac_no,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="totalMinute != null" >
+        total_minute,
+      </if>
+      <if test="lightSleepCount != null" >
+        light_sleep_count,
+      </if>
+      <if test="deepSleepCount != null" >
+        deep_sleep_count,
+      </if>
+      <if test="wakeCount != null" >
+        wake_count,
+      </if>
+      <if test="wakeMinute != null" >
+        wake_minute,
+      </if>
+      <if test="ligthSleepMinute != null" >
+        ligth_sleep_minute,
+      </if>
+      <if test="deepSleepMinute != null" >
+        deep_sleep_minute,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="macNo != null" >
+        #{macNo,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=INTEGER},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=INTEGER},
+      </if>
+      <if test="totalMinute != null" >
+        #{totalMinute,jdbcType=INTEGER},
+      </if>
+      <if test="lightSleepCount != null" >
+        #{lightSleepCount,jdbcType=INTEGER},
+      </if>
+      <if test="deepSleepCount != null" >
+        #{deepSleepCount,jdbcType=INTEGER},
+      </if>
+      <if test="wakeCount != null" >
+        #{wakeCount,jdbcType=INTEGER},
+      </if>
+      <if test="wakeMinute != null" >
+        #{wakeMinute,jdbcType=INTEGER},
+      </if>
+      <if test="ligthSleepMinute != null" >
+        #{ligthSleepMinute,jdbcType=INTEGER},
+      </if>
+      <if test="deepSleepMinute != null" >
+        #{deepSleepMinute,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="mybatis.BandSleepDate" >
+    update band_sleep_date
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="macNo != null" >
+        mac_no = #{macNo,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=INTEGER},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=INTEGER},
+      </if>
+      <if test="totalMinute != null" >
+        total_minute = #{totalMinute,jdbcType=INTEGER},
+      </if>
+      <if test="lightSleepCount != null" >
+        light_sleep_count = #{lightSleepCount,jdbcType=INTEGER},
+      </if>
+      <if test="deepSleepCount != null" >
+        deep_sleep_count = #{deepSleepCount,jdbcType=INTEGER},
+      </if>
+      <if test="wakeCount != null" >
+        wake_count = #{wakeCount,jdbcType=INTEGER},
+      </if>
+      <if test="wakeMinute != null" >
+        wake_minute = #{wakeMinute,jdbcType=INTEGER},
+      </if>
+      <if test="ligthSleepMinute != null" >
+        ligth_sleep_minute = #{ligthSleepMinute,jdbcType=INTEGER},
+      </if>
+      <if test="deepSleepMinute != null" >
+        deep_sleep_minute = #{deepSleepMinute,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="mybatis.BandSleepDate" >
+    update band_sleep_date
+    set user_id = #{userId,jdbcType=INTEGER},
+      mac_no = #{macNo,jdbcType=VARCHAR},
+      date = #{date,jdbcType=INTEGER},
+      end_time = #{endTime,jdbcType=INTEGER},
+      total_minute = #{totalMinute,jdbcType=INTEGER},
+      light_sleep_count = #{lightSleepCount,jdbcType=INTEGER},
+      deep_sleep_count = #{deepSleepCount,jdbcType=INTEGER},
+      wake_count = #{wakeCount,jdbcType=INTEGER},
+      wake_minute = #{wakeMinute,jdbcType=INTEGER},
+      ligth_sleep_minute = #{ligthSleepMinute,jdbcType=INTEGER},
+      deep_sleep_minute = #{deepSleepMinute,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

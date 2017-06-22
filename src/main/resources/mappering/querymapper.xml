@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+    "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--这块等于dao接口的实现 namespace必须和接口的类路径一样-->
+<mapper namespace="easyui.iyunmai.mapper.queryMapper">
+ <!-- findByName 和  inserUser必须和接口中的方法名一样 返回一个User 就是刚才的别名 如果不弄别名要连类路径一起写-->
+ 	<resultMap type="easyui.iyunmai.module.menu" id="menuList">
+ 	</resultMap>
+ 	 <select id="queryMenu"  resultType="easyui.iyunmai.module.menu">
+  		select * from menu
+    </select> 
+    <select id="queryFood"  resultType="String">
+  		select Food from menu
+    </select>
+   	  <select id="queryuserBynameAndword" parameterType="String"  resultType="easyui.iyunmai.module.user">
+  		select * from user where UserName = #{name} and Password = #{word}
+  		<!-- <where>
+			<if test="name!=null">
+				and  UserName = #{name}
+			</if>
+			<if test="word!=null">
+				and Password = #{word}
+			</if>
+		</where> -->
+    </select>
+    <select id="queryrestaurant"  resultType="easyui.iyunmai.module.restaurant">
+  		select * from restaurant
+    </select> 
+    
+    <select id="queryFoodByResid" parameterType="int"  resultType="easyui.iyunmai.module.menu">
+  		<![CDATA[  select * from menu ]]>
+  		<where>
+  			<if test="resid!=null and resid!=0">
+  				<![CDATA[ and RestaurantId = #{resid} ]]>
+  			</if>
+  		</where>
+  			<if test="beginOffset!=null and rows !=null">
+  				LIMIT #{beginOffset},#{rows}
+  			</if>
+    </select>
+    
+    <select id="queryMenuCountByResid" parameterType="int"  resultType="int">
+  		<![CDATA[ select count(*) from menu ]]>
+    <where>
+  			<if test="resid!=null and resid!=0">
+  				<![CDATA[ and RestaurantId = #{resid} ]]>
+  			</if>
+  		</where>
+  		</select>
+    <!-- <select id="queryUsersInfoCounts"  resultType="int">
+  		select count(*) from usersinfo
+    </select>
+    <select id="queryUsersInfo"  resultType="easyui.iyunmai.module.usersinfo">
+  		<![CDATA[ 
+  		select * from usersinfo usi
+  		]]>
+  		<where>
+  		ORDER BY  usi.CreateTime DESC
+  			<if test="beginOffset!=null and rows !=null">
+  				LIMIT #{beginOffset},#{rows}
+  			</if>
+  		</where>
+    </select> -->
+</mapper>

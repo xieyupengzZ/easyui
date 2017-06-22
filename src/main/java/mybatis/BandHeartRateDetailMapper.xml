@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mybatis.BandHeartRateDetailMapper" >
+  <resultMap id="BaseResultMap" type="mybatis.BandHeartRateDetail" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="mac_no" property="macNo" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="INTEGER" />
+    <result column="datetime" property="datetime" jdbcType="INTEGER" />
+    <result column="slient_heart_rate" property="slientHeartRate" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="sync_time" property="syncTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, mac_no, date, datetime, slient_heart_rate, create_time, sync_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from band_heart_rate_detail
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from band_heart_rate_detail
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="mybatis.BandHeartRateDetail" >
+    insert into band_heart_rate_detail (id, user_id, mac_no, 
+      date, datetime, slient_heart_rate, 
+      create_time, sync_time)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=INTEGER}, #{macNo,jdbcType=VARCHAR}, 
+      #{date,jdbcType=INTEGER}, #{datetime,jdbcType=INTEGER}, #{slientHeartRate,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{syncTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="mybatis.BandHeartRateDetail" >
+    insert into band_heart_rate_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="macNo != null" >
+        mac_no,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="datetime != null" >
+        datetime,
+      </if>
+      <if test="slientHeartRate != null" >
+        slient_heart_rate,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="syncTime != null" >
+        sync_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="macNo != null" >
+        #{macNo,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=INTEGER},
+      </if>
+      <if test="datetime != null" >
+        #{datetime,jdbcType=INTEGER},
+      </if>
+      <if test="slientHeartRate != null" >
+        #{slientHeartRate,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="syncTime != null" >
+        #{syncTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="mybatis.BandHeartRateDetail" >
+    update band_heart_rate_detail
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="macNo != null" >
+        mac_no = #{macNo,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=INTEGER},
+      </if>
+      <if test="datetime != null" >
+        datetime = #{datetime,jdbcType=INTEGER},
+      </if>
+      <if test="slientHeartRate != null" >
+        slient_heart_rate = #{slientHeartRate,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="syncTime != null" >
+        sync_time = #{syncTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="mybatis.BandHeartRateDetail" >
+    update band_heart_rate_detail
+    set user_id = #{userId,jdbcType=INTEGER},
+      mac_no = #{macNo,jdbcType=VARCHAR},
+      date = #{date,jdbcType=INTEGER},
+      datetime = #{datetime,jdbcType=INTEGER},
+      slient_heart_rate = #{slientHeartRate,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      sync_time = #{syncTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

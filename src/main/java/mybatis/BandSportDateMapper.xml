@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mybatis.BandSportDateMapper" >
+  <resultMap id="BaseResultMap" type="mybatis.BandSportDate" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="mac_no" property="macNo" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="INTEGER" />
+    <result column="total_active_time" property="totalActiveTime" jdbcType="INTEGER" />
+    <result column="total_cal" property="totalCal" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, mac_no, date, total_active_time, total_cal, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from band_sport_date
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from band_sport_date
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="mybatis.BandSportDate" >
+    insert into band_sport_date (id, user_id, mac_no, 
+      date, total_active_time, total_cal, 
+      update_time)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=INTEGER}, #{macNo,jdbcType=VARCHAR}, 
+      #{date,jdbcType=INTEGER}, #{totalActiveTime,jdbcType=INTEGER}, #{totalCal,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="mybatis.BandSportDate" >
+    insert into band_sport_date
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="macNo != null" >
+        mac_no,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="totalActiveTime != null" >
+        total_active_time,
+      </if>
+      <if test="totalCal != null" >
+        total_cal,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="macNo != null" >
+        #{macNo,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=INTEGER},
+      </if>
+      <if test="totalActiveTime != null" >
+        #{totalActiveTime,jdbcType=INTEGER},
+      </if>
+      <if test="totalCal != null" >
+        #{totalCal,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="mybatis.BandSportDate" >
+    update band_sport_date
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="macNo != null" >
+        mac_no = #{macNo,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=INTEGER},
+      </if>
+      <if test="totalActiveTime != null" >
+        total_active_time = #{totalActiveTime,jdbcType=INTEGER},
+      </if>
+      <if test="totalCal != null" >
+        total_cal = #{totalCal,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="mybatis.BandSportDate" >
+    update band_sport_date
+    set user_id = #{userId,jdbcType=INTEGER},
+      mac_no = #{macNo,jdbcType=VARCHAR},
+      date = #{date,jdbcType=INTEGER},
+      total_active_time = #{totalActiveTime,jdbcType=INTEGER},
+      total_cal = #{totalCal,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

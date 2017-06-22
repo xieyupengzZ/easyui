@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mybatis.BandStepDateMapper" >
+  <resultMap id="BaseResultMap" type="mybatis.BandStepDate" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="macNo" property="macno" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="INTEGER" />
+    <result column="totalStep" property="totalstep" jdbcType="INTEGER" />
+    <result column="totalCal" property="totalcal" jdbcType="INTEGER" />
+    <result column="totalDistances" property="totaldistances" jdbcType="INTEGER" />
+    <result column="totalActiveTime" property="totalactivetime" jdbcType="INTEGER" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, userId, macNo, date, totalStep, totalCal, totalDistances, totalActiveTime, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from band_step_date
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from band_step_date
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="mybatis.BandStepDate" >
+    insert into band_step_date (id, userId, macNo, 
+      date, totalStep, totalCal, 
+      totalDistances, totalActiveTime, updateTime
+      )
+    values (#{id,jdbcType=BIGINT}, #{userid,jdbcType=INTEGER}, #{macno,jdbcType=VARCHAR}, 
+      #{date,jdbcType=INTEGER}, #{totalstep,jdbcType=INTEGER}, #{totalcal,jdbcType=INTEGER}, 
+      #{totaldistances,jdbcType=INTEGER}, #{totalactivetime,jdbcType=INTEGER}, #{updatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="mybatis.BandStepDate" >
+    insert into band_step_date
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="macno != null" >
+        macNo,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="totalstep != null" >
+        totalStep,
+      </if>
+      <if test="totalcal != null" >
+        totalCal,
+      </if>
+      <if test="totaldistances != null" >
+        totalDistances,
+      </if>
+      <if test="totalactivetime != null" >
+        totalActiveTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="macno != null" >
+        #{macno,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=INTEGER},
+      </if>
+      <if test="totalstep != null" >
+        #{totalstep,jdbcType=INTEGER},
+      </if>
+      <if test="totalcal != null" >
+        #{totalcal,jdbcType=INTEGER},
+      </if>
+      <if test="totaldistances != null" >
+        #{totaldistances,jdbcType=INTEGER},
+      </if>
+      <if test="totalactivetime != null" >
+        #{totalactivetime,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="mybatis.BandStepDate" >
+    update band_step_date
+    <set >
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="macno != null" >
+        macNo = #{macno,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=INTEGER},
+      </if>
+      <if test="totalstep != null" >
+        totalStep = #{totalstep,jdbcType=INTEGER},
+      </if>
+      <if test="totalcal != null" >
+        totalCal = #{totalcal,jdbcType=INTEGER},
+      </if>
+      <if test="totaldistances != null" >
+        totalDistances = #{totaldistances,jdbcType=INTEGER},
+      </if>
+      <if test="totalactivetime != null" >
+        totalActiveTime = #{totalactivetime,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="mybatis.BandStepDate" >
+    update band_step_date
+    set userId = #{userid,jdbcType=INTEGER},
+      macNo = #{macno,jdbcType=VARCHAR},
+      date = #{date,jdbcType=INTEGER},
+      totalStep = #{totalstep,jdbcType=INTEGER},
+      totalCal = #{totalcal,jdbcType=INTEGER},
+      totalDistances = #{totaldistances,jdbcType=INTEGER},
+      totalActiveTime = #{totalactivetime,jdbcType=INTEGER},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
