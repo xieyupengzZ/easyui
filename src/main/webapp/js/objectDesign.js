@@ -6,12 +6,18 @@ $(document).ready(function(){
 var docMain={
 			
 			main : function(){
-				
 				com.toolClickEvent();
 				docMain.queryEvent();
 				docMain.loadData();
+                $("#submitForm").click(function(){
+                    docMain.saveData2();
+                });
 			},
-			
+
+			url:{
+				urlUpload : ""//上传路径
+			},
+
 			queryEvent : function(){
 				$('#btnSearch').click(function(){
 						var residO = $('#queryConditionO').val();
@@ -23,7 +29,34 @@ var docMain={
 						docMain.loadData();
 				})
 			},
-			
+			//上传图片事件
+			saveData2 : function() {
+				$('#fm2').form('submit', {
+					url : docMain.url.urlUpload,
+					onSubmit : function() {
+						if($(this).form('validate')==true){
+							$("#submitForm").linkbutton('disable');//改变按钮样式
+							$('#submitForm').unbind();//移除该元素的事件处理程序
+						}
+						return $(this).form('validate');
+					},
+					success : function(result) {
+						$("#submitForm").linkbutton('enable');
+						$('#submitForm').bind('click',docMain.saveData2);
+
+						var data = eval('(' + result + ')');
+						if (parseInt(data.result.code) != 0) {
+							com.showError(data.result.msgcn);
+						} else {
+							var url = data.result.data;
+							$("input[name='imgUrl']").val(url);
+							$("#img").attr("src",url);
+							$("#img").css("display","block");
+							com.show(data.result.msgcn);
+						}
+					}
+				});
+			},
 			addEvent : function(){
 				/*$('#dlf').form('clear');
 				$('#dl').dialog('open').dialog('setTitle', '编辑');*/

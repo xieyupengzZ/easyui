@@ -36,11 +36,29 @@
 				<div><span>价格</span><input type="text" class="easyui-validatebox" required="true"  name="price"/></div>
 				<div><span>额外价格</span><input type="text"  class="easyui-validatebox" required="true"  name="extrafee"/></div>
 				<div><span>餐馆</span><input type="text" class="easyui-validatebox" required="true"  name="restaurantid"/></div>
+				<input type="hidden" name="imgUrl" value="">
 			</form>
 		</div>
 		<div id="dl2" class="easyui-dialog" buttons="#btnbar2" closed="true" >
 			<form id="uploadfm" method="post" enctype="multipart/form-data">
 					<input type="file" name="fileup" />
+			</form>
+			<form id="fm2" style="padding: 10px 10px;" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
+				<input type="hidden" name="id" value="" />
+				<input type="hidden" name="token" value="" />
+				<input type = "hidden" name="type" value=""/>
+				<table style="width:auto;height:auto;padding: 0;margin: 0;">
+					<tr>
+						<td>图片：</td>
+						<td ><input type="file" name="files" /></td>
+						<td ><a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" id="submitForm">Submit</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td colspan="2" id ="showImg" style="margin: 0;padding: 0;border: 1px black solid;"><img id="img" alt="" src="" style="display: none;"/></td>
+						<td></td>
+					<tr/>
+				</table>
 			</form>
 		</div>
 		 <div id="btnbar">
