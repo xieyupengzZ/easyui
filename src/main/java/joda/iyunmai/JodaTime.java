@@ -1,6 +1,7 @@
 package joda.iyunmai;
 
 import java.awt.datatransfer.SystemFlavorMap;
+import java.util.Calendar;
 
 import org.apache.poi.ss.formula.functions.Now;
 import org.joda.time.DateMidnight;
@@ -44,5 +45,25 @@ public class JodaTime {
 					.setDay("Monday") 
 					.plusDay(1);  //加1天*/			
 			return s;
+		}
+
+		public void CalendarText(){
+			Calendar calendar_s = Calendar.getInstance();
+			Calendar calendar_e = Calendar.getInstance();
+
+			//记住，月份起始是从0开始的！！！！！
+//        calendar_s.set(2018,3,1,0,0,0);
+//        calendar_e.set(2018,3,2,0,0,0);
+
+			//设置为当前月的第一天
+			calendar_e.set(Calendar.DATE,1);
+			System.out.println(calendar_e.getTime());
+			//设置成当前月最后一天
+			calendar_s.add(Calendar.MONTH,1);
+			calendar_s.set(Calendar.DATE,1);
+			calendar_s.add(Calendar.DAY_OF_MONTH,-1);
+			System.out.println(calendar_s.getTime());
+			System.out.println(calendar_s.getActualMaximum(Calendar.DAY_OF_MONTH));//该月的最大值
+			System.out.println(calendar_s.getMaximum(Calendar.DAY_OF_MONTH)); //所有该类型中，最大的，比如，1月是31天，2月是30天，返回31天
 		}
 }
